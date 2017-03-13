@@ -10,7 +10,13 @@ require('./bootstrap');
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+const element = React.createElement(
+  'h1',
+  {className: 'greeting'},
+  'Hello, world!'
+);
+
 ReactDOM.render(
-  <h1>Hello, world!</h1>,
+  element,
   document.getElementById('app')
 );

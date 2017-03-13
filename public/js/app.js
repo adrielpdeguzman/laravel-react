@@ -20347,11 +20347,9 @@ __webpack_require__(107);
 
 
 
-__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-  'h1',
-  null,
-  'Hello, world!'
-), document.getElementById('app'));
+var element = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('h1', { className: 'greeting' }, 'Hello, world!');
+
+__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(element, document.getElementById('app'));
 
 /***/ }),
 /* 88 */
