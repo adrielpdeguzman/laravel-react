@@ -15,7 +15,7 @@
         </script>
     </head>
     <body>
-        <div id="app"></div>
+        <div class="container" id="app"></div>
 
         <script src="{{ mix('/js/app.js') }}"></script>
     </body>
