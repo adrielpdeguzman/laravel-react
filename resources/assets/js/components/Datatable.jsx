@@ -7,6 +7,7 @@ export default class Datatable extends React.Component {
         this.state = {
             data: [],
             pagination: [],
+            isLoading: false,
             params: {
                 q: '',
                 page: 1,
@@ -27,6 +28,7 @@ export default class Datatable extends React.Component {
     render() {
         return (
             <div>
+                { this.state.isLoading ? <LoadingOverlay /> : '' }
                 <TableParams params={ this.state.params } handleOnChange={ this.onParamsChange } />
                 <hr />
                 <table className="table table-condensed table-bordered table-striped">
@@ -45,6 +47,7 @@ export default class Datatable extends React.Component {
 
     fetchData() {
         const params = Object.assign({}, this.state.params, { fields: this.props.fields });
+        this.setState({ isLoading: true });
         axios.get(this.props.url, { params })
             .then(({ data }) => {
                 const pagination = Object.assign({}, data);
@@ -53,7 +56,9 @@ export default class Datatable extends React.Component {
                 this.setState({ 
                     pagination,
                     data: data.data,
-                })
+                });
+
+                this.setState({ isLoading: false });
             });
     }
 
@@ -214,6 +219,14 @@ class Pagination extends React.Component {
                     </li>
                 </ul>
             </nav>
+        );
+    }
+}
+
+class LoadingOverlay extends React.Component {
+    render() {
+        return(
+            <div>Loading</div>
         );
     }
 }
