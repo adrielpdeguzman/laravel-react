@@ -57,11 +57,16 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email|unique',
-            'password' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|confirmed',
         ]);
 
-        return response()->json([], 201);
+        $user = new User();
+        $user->fill($request->only(['name', 'email', 'password']));
+        $user->save();
+
+
+        return response()->json($user, 201);
     }
 
     /**
