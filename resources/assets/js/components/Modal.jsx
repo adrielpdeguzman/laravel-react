@@ -5,7 +5,7 @@ export default class Modal extends React.Component {
     render() {
         return (
             <div>
-                <div id="myModal" className="modal fade" tabIndex="-1" role="dialog">
+                <div id={ this.props.id } className="modal fade in" tabIndex="-1" role="dialog" data-backdrop="static">
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
@@ -16,18 +16,16 @@ export default class Modal extends React.Component {
                             <div className="modal-body">
                                 { this.props.children }
                             </div>
-                            
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" className="btn btn-primary" onClick={ this.props.callback }>Save changes</button>
-                            </div>
+
+                            { !this.props.footer ? '' :
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" className="btn btn-primary" onClick={ this.props.callback }>Save changes</button>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
-
-                <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                    Create a user
-                </button>
             </div>
         );
     }
