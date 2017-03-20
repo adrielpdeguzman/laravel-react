@@ -9,15 +9,9 @@ require('./bootstrap');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Datatable from './components/Datatable';
+import Users from './pages/Users';
 
 ReactDOM.render(
-    <div>
-        <Datatable 
-            url="/users"
-            fields={ ['id', 'name', 'email'] }
-            headers={ ['ID', 'Name', 'E-mail Address'] }
-        />
-    </div>,
+    <Users />,
     document.getElementById('app')
 );
